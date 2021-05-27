@@ -1,0 +1,11 @@
+[Unit]
+Description=Periodic Measuremens Service
+Before=shutdowncheck.service
+After=multi-user.target
+
+[Service]
+Type=idle
+ExecStart=/usr/bin/%%MEASUREMENT_TYPE%%-measurements
+
+[Install]
+WantedBy=multi-user.target

@@ -1,0 +1,14 @@
+menu "Localizer"
+	source "$BR2_EXTERNAL_RPI_FAST_REBOOT_PATH/package/rpi-localizer/Config.in"
+endmenu
+
+menu "Measurements"
+	source "$BR2_EXTERNAL_RPI_FAST_REBOOT_PATH/package/shutdowncheck/Config.in"
+	source "$BR2_EXTERNAL_RPI_FAST_REBOOT_PATH/package/boot-measurements/Config.in"
+	source "$BR2_EXTERNAL_RPI_FAST_REBOOT_PATH/package/periodic-measurements/Config.in"
+endmenu
+
+menu "Configuration"
+	source "$BR2_EXTERNAL_RPI_FAST_REBOOT_PATH/package/rpi-config/Config.in"
+	source "$BR2_EXTERNAL_RPI_FAST_REBOOT_PATH/package/rpi-cmdline/Config.in"
+endmenu

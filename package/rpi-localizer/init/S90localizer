@@ -1,0 +1,16 @@
+#!/bin/sh
+
+case "$1" in
+  start)
+    printf "Starting localizer...\n"
+    /usr/bin/localizer 1>>/var/log/localizer.log &
+    ;;
+  stop)
+    # ignore
+    ;;
+  *)
+    echo "Usage: $0 {start|stop}"
+    exit 1
+esac
+
+exit $?

@@ -1,0 +1,9 @@
+config BR2_PACKAGE_SHUTDOWNCHECK
+	bool "shutdowncheck"
+	help
+	  This is a package to measure boot times of a
+	  Raspberry Pi with Sleepy Pi 2. It will indicate the
+	  RPi is running and check if it should shut down.
+	  
+	  Measurement software for the Sleepy Pi 2 is included
+	  in the sleepypi2 board folder.

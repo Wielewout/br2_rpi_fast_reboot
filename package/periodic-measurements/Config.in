@@ -1,0 +1,21 @@
+config BR2_PACKAGE_PERIODIC_MEASUREMENTS
+	bool "periodic-measurements"
+	depends on BR2_PACKAGE_SHUTDOWNCHECK
+	depends on BR2_PACKAGE_RPI_LOCALIZER
+	help
+	  This is a package that is used for periodic
+	  measurements using the Sleepy Pi 2 and
+	  localizer application as load.
+	  Add pkill in the busybox configuration!
+
+comment "periodic-measurements depends on rpi-localizer and shutdowncheck"
+	depends on !BR2_PACKAGE_SHUTDOWNCHECK \
+		|| !BR2_PACKAGE_RPI_LOCALIZER
+
+config BR2_PACKAGE_PERIODIC_MEASUREMENTS_TYPE
+	string "periodic-measurements type"
+	default "shut"
+	depends on BR2_PACKAGE_PERIODIC_MEASUREMENTS
+	help
+	  The type for the periodic measurements
+	  (type=shut|idle).

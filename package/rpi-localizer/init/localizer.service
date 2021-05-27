@@ -1,0 +1,11 @@
+[Unit]
+Description=Vehicle Localizer Service
+Before=shutdowncheck.service
+After=multi-user.target
+
+[Service]
+Type=idle
+ExecStart=/usr/bin/localizer
+
+[Install]
+WantedBy=multi-user.target

@@ -1,0 +1,16 @@
+config BR2_PACKAGE_RPI_CMDLINE
+	bool "rpi-cmdline"
+	depends on BR2_PACKAGE_RPI_FIRMWARE
+	help
+	  This is a package that is used to alter the
+	  cmdline.txt file from rpi-firmware.
+
+comment "rpi-cmdline depends on rpi-firmware"
+	depends on !BR2_PACKAGE_RPI_FIRMWARE
+
+config BR2_PACKAGE_RPI_CMDLINE_TXT
+	string "cmdline.txt"
+	default "root=/dev/mmcblk0p2 rootwait console=tty1 console=ttyAMA0,115200"
+	depends on BR2_PACKAGE_RPI_CMDLINE
+	help
+	  The text to put in cmdline.txt.

@@ -1,0 +1,16 @@
+#!/bin/sh
+
+case "$1" in
+  start)
+    printf "Starting periodic measurements...\n"
+    /usr/bin/%%MEASUREMENT_TYPE%%-measurements 1>>/var/log/periodic-measurements.log &
+    ;;
+  stop)
+    # ignore
+    ;;
+  *)
+    echo "Usage: $0 {start|stop}"
+    exit 1
+esac
+
+exit $?

@@ -1,0 +1,16 @@
+#!/bin/sh
+
+case "$1" in
+  start)
+    printf "Starting shutdowncheck...\n"
+    /usr/bin/shutdowncheck &
+    ;;
+  stop)
+    # ignore
+    ;;
+  *)
+    echo "Usage: $0 {start|stop}"
+    exit 1
+esac
+
+exit $?

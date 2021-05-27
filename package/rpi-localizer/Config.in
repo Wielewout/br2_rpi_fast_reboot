@@ -1,0 +1,18 @@
+config BR2_PACKAGE_RPI_LOCALIZER
+	bool "rpi-localizer"
+	depends on BR2_TOOLCHAIN_BUILDROOT_GLIBC
+	depends on BR2_PACKAGE_RPI_FIRMWARE
+	depends on BR2_PACKAGE_RPI_FIRMWARE_X
+	depends on BR2_PACKAGE_RPI_USERLAND
+	help
+	  This is a package to localize vehicles with the
+	  Raspberry Pi Camera and a Zero W with Sleepy Pi 2.
+
+comment "rpi-localizer needs a toolchain w/ glibc"
+	depends on !BR2_TOOLCHAIN_BUILDROOT_GLIBC
+
+comment "rpi-localizer depends on extended rpi-firmware"
+	depends on !BR2_PACKAGE_RPI_FIRMWARE || !BR2_PACKAGE_RPI_FIRMWARE_X
+
+comment "rpi-localizer depends on rpi-userland"
+	depends on !BR2_PACKAGE_RPI_USERLAND

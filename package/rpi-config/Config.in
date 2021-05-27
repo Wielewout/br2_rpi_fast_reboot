@@ -1,0 +1,347 @@
+menuconfig BR2_PACKAGE_RPI_CONFIG
+	bool "rpi-config"
+	depends on BR2_PACKAGE_RPI_FIRMWARE
+	help
+	  This is a package that is used to alter the
+	  config.txt file from rpi-firmware.
+
+if BR2_PACKAGE_RPI_CONFIG
+
+config BR2_PACKAGE_RPI_CONFIG_MINIMAL
+	bool "minimal config file"
+	depends on BR2_PACKAGE_RPI_CONFIG
+	help
+	  Minimize the config.txt file by
+	  removing blank lines and comments.
+
+menu "Memory"
+
+config BR2_PACKAGE_RPI_CONFIG_GPU_MEM
+	bool "gpu mem"
+	depends on BR2_PACKAGE_RPI_CONFIG
+	help
+	  Enable to set GPU memory (gpu_mem=64).
+
+config BR2_PACKAGE_RPI_CONFIG_GPU_MEM_VALUE
+	int "gpu mem value"
+	depends on BR2_PACKAGE_RPI_CONFIG
+	depends on BR2_PACKAGE_RPI_CONFIG_GPU_MEM
+	help
+	  GPU memory (gpu_mem=64).
+
+config BR2_PACKAGE_RPI_CONFIG_GPU_MEM_256
+	int "gpu mem 256"
+	default 100
+	depends on BR2_PACKAGE_RPI_CONFIG
+	help
+	  GPU memory with 256 MB total memory
+	  (gpu_mem_256=100).
+
+config BR2_PACKAGE_RPI_CONFIG_GPU_MEM_512
+	int "gpu mem 512"
+	default 100
+	depends on BR2_PACKAGE_RPI_CONFIG
+	help
+	  GPU memory with 512 MB total memory
+	  (gpu_mem_512=100).
+
+config BR2_PACKAGE_RPI_CONFIG_GPU_MEM_1024
+	int "gpu mem 1024"
+	default 100
+	depends on BR2_PACKAGE_RPI_CONFIG
+	help
+	  GPU memory with 1024 MB or more
+	  total memory (gpu_mem_1024=100).
+
+config BR2_PACKAGE_RPI_CONFIG_TOTAL_MEM
+	bool "total mem"
+	depends on BR2_PACKAGE_RPI_CONFIG
+	help
+	  Enable to set the total memory
+	  to limit the board to (total_mem=1024).
+
+config BR2_PACKAGE_RPI_CONFIG_TOTAL_MEM_VALUE
+	int "total mem value"
+	depends on BR2_PACKAGE_RPI_CONFIG
+	depends on BR2_PACKAGE_RPI_CONFIG_TOTAL_MEM
+	help
+	  Total memory to limit the board to
+	  (total_mem=1024).
+
+config BR2_PACKAGE_RPI_CONFIG_DISABLE_L2CACHE
+	bool "disable l2cache"
+	depends on BR2_PACKAGE_RPI_CONFIG
+	help
+	  Disable l2cache (disable_l2cache=1).
+
+endmenu # Memory
+
+menu "License Keys/Codec"
+
+config BR2_PACKAGE_RPI_CONFIG_DECODE_MPG2
+	string "decode mpg2"
+	depends on BR2_PACKAGE_RPI_CONFIG
+	help
+	  License key to decode mpg2
+	  (decode_MPG2=0x12345678).
+
+config BR2_PACKAGE_RPI_CONFIG_DECODE_WVC1
+	string "decode wvc1"
+	depends on BR2_PACKAGE_RPI_CONFIG
+	help
+	  License key to decode wvc1
+	  (decode_WVC1=0x12345678).
+
+endmenu # License Keys/Codec
+
+menu "Video/Display"
+
+config BR2_PACKAGE_RPI_CONFIG_HDMI_SAFE
+	bool "hdmi safe"
+	depends on BR2_PACKAGE_RPI_CONFIG
+	help
+	  HDMI safe (hdmi_safe=1).
+
+config BR2_PACKAGE_RPI_CONFIG_DISABLE_OVERSCAN
+	bool "disable overscan"
+	default y
+	depends on BR2_PACKAGE_RPI_CONFIG
+	help
+	  Disable overscan (disable_overscan=1).
+
+endmenu # Video/Display
+
+menu "Audio"
+
+endmenu # Audio
+
+menu "Camera"
+
+config BR2_PACKAGE_RPI_CONFIG_DISABLE_CAMERA_LED
+	bool "disable camera led"
+	depends on BR2_PACKAGE_RPI_CONFIG
+	help
+	  Disable camera LED (disable_camera_led=1).
+
+endmenu # Camera
+
+menu "Boot"
+
+config BR2_PACKAGE_RPI_CONFIG_START_FILE
+	string "start file"
+	default "start.elf"
+	depends on BR2_PACKAGE_RPI_CONFIG
+	help
+	  Start file (start_file=start.elf).
+
+config BR2_PACKAGE_RPI_CONFIG_FIXUP_FILE
+	string "fixup file"
+	default "fixup.dat"
+	depends on BR2_PACKAGE_RPI_CONFIG
+	help
+	  Fixup file (fixup_file=fixup.dat).
+
+config BR2_PACKAGE_RPI_CONFIG_DISABLE_COMMANDLINE_TAGS
+	bool "disable commandline tags"
+	depends on BR2_PACKAGE_RPI_CONFIG
+	help
+	  Disable commandline tags (disable_commandline_tags=1).
+
+config BR2_PACKAGE_RPI_CONFIG_CMDLINE
+	string "cmdline"
+	depends on BR2_PACKAGE_RPI_CONFIG
+	help
+	  Cmdline text file (cmdline=cmdline.txt).
+
+config BR2_PACKAGE_RPI_CONFIG_KERNEL
+	string "kernel"
+	default "zImage"
+	depends on BR2_PACKAGE_RPI_CONFIG
+	help
+	  Kernel image file (kernel=zImage).
+
+config BR2_PACKAGE_RPI_CONFIG_ARM_64BIT
+	bool "arm 64-bit"
+	depends on BR2_PACKAGE_RPI_CONFIG
+	help
+	  ARM 64-bit (arm_64bit=1).
+
+config BR2_PACKAGE_RPI_CONFIG_ARMSTUB
+	string "arm stub"
+	depends on BR2_PACKAGE_RPI_CONFIG
+	help
+	  ARM stub (armstub=armstub.S).
+
+config BR2_PACKAGE_RPI_CONFIG_BOOTCODE_DELAY
+	int "bootcode delay"
+	default 0
+	depends on BR2_PACKAGE_RPI_CONFIG
+	help
+	  Bootcode delay in seconds (bootcode_delay=0).
+
+config BR2_PACKAGE_RPI_CONFIG_BOOT_DELAY
+	int "boot delay"
+	default 0
+	depends on BR2_PACKAGE_RPI_CONFIG
+	help
+	  Boot delay in seconds (boot_delay=1).
+
+config BR2_PACKAGE_RPI_CONFIG_BOOT_DELAY_MS
+	int "boot delay ms"
+	default 0
+	depends on BR2_PACKAGE_RPI_CONFIG
+	help
+	  Boot delay in milliseconds (boot_delay_ms=0).
+
+config BR2_PACKAGE_RPI_CONFIG_DISABLE_SPLASH
+	bool "disable splash"
+	depends on BR2_PACKAGE_RPI_CONFIG
+	help
+	  Disable rainbow splash screen (disable_splash=1).
+
+endmenu # Boot
+
+menu "Ports and device tree"
+
+config BR2_PACKAGE_RPI_CONFIG_DEVICE_TREE
+	bool "device tree"
+	depends on BR2_PACKAGE_RPI_CONFIG
+	help
+	  Use a specific device tree (device_tree=bcm2708-rpi-zero-w.dtb).
+
+config BR2_PACKAGE_RPI_CONFIG_DEVICE_TREE_NAME
+	string "device tree name"
+	depends on BR2_PACKAGE_RPI_CONFIG_DEVICE_TREE
+	help
+	  Specific device tree name (device_tree=bcm2708-rpi-zero-w.dtb).
+
+config BR2_PACKAGE_RPI_CONFIG_ENABLE_UART
+	bool "enable uart"
+	depends on BR2_PACKAGE_RPI_CONFIG
+	help
+	  Enable uart (enable_uart=1).
+
+endmenu # Ports and device tree
+
+menu "GPIOs"
+
+endmenu # GPIOs
+
+menuconfig BR2_PACKAGE_RPI_CONFIG_OVERCLOCK
+	bool "Overclocking"
+	depends on BR2_PACKAGE_RPI_CONFIG
+	help
+	  Enable overclocking configuration.
+
+if BR2_PACKAGE_RPI_CONFIG_OVERCLOCK
+
+config BR2_PACKAGE_RPI_CONFIG_INITIAL_TURBO
+	bool "initial turbo"
+	depends on BR2_PACKAGE_RPI_CONFIG
+	depends on BR2_PACKAGE_RPI_CONFIG_OVERCLOCK
+	help
+	  Initial turbo (initial_turbo=1).
+
+config BR2_PACKAGE_RPI_CONFIG_FORCE_TURBO
+	bool "force turbo"
+	depends on BR2_PACKAGE_RPI_CONFIG
+	depends on BR2_PACKAGE_RPI_CONFIG_OVERCLOCK
+	help
+	  Force turbo (force_turbo=1).
+
+config BR2_PACKAGE_RPI_CONFIG_OVER_VOLTAGE
+	bool "over voltage"
+	depends on BR2_PACKAGE_RPI_CONFIG
+	depends on BR2_PACKAGE_RPI_CONFIG_OVERCLOCK
+	help
+	  Enable to set over voltage (over_voltage=0).
+
+config BR2_PACKAGE_RPI_CONFIG_OVER_VOLTAGE_VALUE
+	int "over voltage value"
+	depends on BR2_PACKAGE_RPI_CONFIG
+	depends on BR2_PACKAGE_RPI_CONFIG_OVERCLOCK
+	depends on BR2_PACKAGE_RPI_CONFIG_OVER_VOLTAGE
+	help
+	  Over voltage (over_voltage=0).
+
+config BR2_PACKAGE_RPI_CONFIG_ARM_FREQ
+	bool "arm freq"
+	depends on BR2_PACKAGE_RPI_CONFIG
+	depends on BR2_PACKAGE_RPI_CONFIG_OVERCLOCK
+	help
+	  Enable to set arm frequency (arm_freq=0).
+
+config BR2_PACKAGE_RPI_CONFIG_ARM_FREQ_VALUE
+	int "arm freq value"
+	depends on BR2_PACKAGE_RPI_CONFIG
+	depends on BR2_PACKAGE_RPI_CONFIG_OVERCLOCK
+	depends on BR2_PACKAGE_RPI_CONFIG_ARM_FREQ
+	help
+	  Arm frequency (arm_freq=0).
+
+config BR2_PACKAGE_RPI_CONFIG_CORE_FREQ
+	bool "core freq"
+	depends on BR2_PACKAGE_RPI_CONFIG
+	depends on BR2_PACKAGE_RPI_CONFIG_OVERCLOCK
+	help
+	  Enable to set core frequency (core_freq=0).
+
+config BR2_PACKAGE_RPI_CONFIG_CORE_FREQ_VALUE
+	int "core freq value"
+	depends on BR2_PACKAGE_RPI_CONFIG
+	depends on BR2_PACKAGE_RPI_CONFIG_OVERCLOCK
+	depends on BR2_PACKAGE_RPI_CONFIG_CORE_FREQ
+	help
+	  Core frequency (core_freq=0).
+
+config BR2_PACKAGE_RPI_CONFIG_SDRAM_FREQ
+	bool "sdram freq"
+	depends on BR2_PACKAGE_RPI_CONFIG
+	depends on BR2_PACKAGE_RPI_CONFIG_OVERCLOCK
+	help
+	  Set to enable SDRAM frequency (sdram_freq=0).
+
+config BR2_PACKAGE_RPI_CONFIG_SDRAM_FREQ_VALUE
+	int "sdram freq value"
+	depends on BR2_PACKAGE_RPI_CONFIG
+	depends on BR2_PACKAGE_RPI_CONFIG_OVERCLOCK
+	depends on BR2_PACKAGE_RPI_CONFIG_SDRAM_FREQ
+	help
+	  SDRAM frequency (sdram_freq=0).
+
+endif # Overclocking
+
+menu "Miscelaneous"
+
+config BR2_PACKAGE_RPI_CONFIG_AVOID_WARNINGS
+	bool "avoid warnings"
+	depends on BR2_PACKAGE_RPI_CONFIG
+	help
+	  Enable to set avoid warnings (avoid_warnings=1).
+
+config BR2_PACKAGE_RPI_CONFIG_AVOID_WARNINGS_VALUE
+	int "avoid warnings value"
+	depends on BR2_PACKAGE_RPI_CONFIG
+	depends on BR2_PACKAGE_RPI_CONFIG_AVOID_WARNINGS
+	help
+	  Avoid warnings (avoid_warnings=1).
+
+config BR2_PACKAGE_RPI_CONFIG_LOGGING_LEVEL
+	bool "logging level"
+	depends on BR2_PACKAGE_RPI_CONFIG
+	help
+	  Enable to set VideoCore logging level (logging_level=1).
+
+config BR2_PACKAGE_RPI_CONFIG_LOGGING_LEVEL_VALUE
+	int "logging level value"
+	depends on BR2_PACKAGE_RPI_CONFIG
+	depends on BR2_PACKAGE_RPI_CONFIG_LOGGING_LEVEL
+	help
+	  VideoCore logging level (logging_level=1).
+
+endmenu # Miscelaneous
+
+endif # BR2_PACKAGE_RPI_CONFIG
+
+comment "rpi-config depends on rpi-firmware"
+	depends on !BR2_PACKAGE_RPI_FIRMWARE
